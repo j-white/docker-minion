@@ -9,8 +9,9 @@ RUN rpm --import http://yum.opennms.org/OPENNMS-GPG-KEY && \
     rpm -Uvh http://yum.opennms.org/stable/rhel7/jicmp6/jicmp6-1.2.4-1.x86_64.rpm && \
     yum install -y postgresql-server
 
-ADD /rpms/* /
-RUN rpm -i /opennms.noarch.rpm /opennms-core.noarch.rpm /opennms-webapp-jetty.noarch.rpm
+ADD /rpms/*.rpm /
+RUN yum localinstall -y /*.rpm && rm -rf /*.rpm
+
 COPY scripts/bootstrap.sh /opt/opennms/bin
  
 # Ports

@@ -3,17 +3,17 @@ MAINTAINER jesse@opennms.org
 
 RUN yum install -y openssh-clients java-1.8.0-openjdk-devel which
 
-ADD /rpms/opennms-minion-container.noarch.rpm /opennms-minion-container.noarch.rpm
-ADD /rpms/opennms-minion-features.noarch.rpm /opennms-minion-features.noarch.rpm
-RUN rpm -i /opennms-minion-container.noarch.rpm /opennms-minion-features.noarch.rpm
+ADD /rpms/*.rpm /
+RUN yum localinstall -y /*.rpm && rm -rf /*.rpm
 
 COPY scripts/bootstrap.sh /opt/minion/bin
 
 # Ports
-# 1099 - RMI Registry
-# 8101 - Karaf SSH
-# 44444 - RMI Server
-EXPOSE 1099 8101 44444
+# 514 - Syslog
+# 1299 - RMI Registry
+# 8201 - Karaf SSH
+# 45444 - RMI Server
+EXPOSE 514 1299 8201 45444
 
 WORKDIR /opt/minion
 ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk

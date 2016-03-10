@@ -1,13 +1,13 @@
-#! /bin/bash
+#!/bin/bash -e
 MINION_HOME=/opt/minion
 
 echo "MINION HOME: ${MINION_HOME}"
 
-echo "broker-url=tcp://${OPENNMS_PORT_61616_TCP_ADDR}:${OPENNMS_PORT_61616_TCP_PORT}" > $MINION_HOME/etc/org.opennms.minion.activemq
-echo "username=admin" >> $MINION_HOME/etc/org.opennms.minion.activemq
-echo "password=admin" >> $MINION_HOME/etc/org.opennms.minion.activemq
+echo "location = MINION" > $MINION_HOME/etc/org.opennms.minion.controller.cfg
+echo "id = 00000000-0000-0000-0000-000000ddba11" >> $MINION_HOME/etc/org.opennms.minion.controller.cfg
+echo "broker-url = tcp://${OPENNMS_PORT_61616_TCP_ADDR}:${OPENNMS_PORT_61616_TCP_PORT}" >> $MINION_HOME/etc/org.opennms.minion.controller.cfg
+echo "username = admin" >> $MINION_HOME/etc/org.opennms.minion.controller.cfg
+echo "password = admin" >> $MINION_HOME/etc/org.opennms.minion.controller.cfg
 
-echo "id=0000-00001" > $MINION_HOME/etc/org.opennms.minion.controller
-echo "location=TEST" >> $MINION_HOME/etc/org.opennms.minion.controller
-
+rm -rf $MINION_HOME/data
 $MINION_HOME/bin/karaf clean server

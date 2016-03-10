@@ -19,5 +19,7 @@ cp $RPM_ROOT/opennms-$RELEASE*.noarch.rpm opennms/rpms/opennms.noarch.rpm
 
 mkdir -p minion/rpms
 rm -rf minion/rpms/*.rpm
-cp $RPM_ROOT/opennms-minion-features-$RELEASE*.noarch.rpm minion/rpms/opennms-minion-features.noarch.rpm
+cp $RPM_ROOT/opennms-minion-$RELEASE*.noarch.rpm  minion/rpms/opennms-minion.noarch.rpm
 cp $RPM_ROOT/opennms-minion-container-$RELEASE*.noarch.rpm minion/rpms/opennms-minion-container.noarch.rpm
+cp $RPM_ROOT/opennms-minion-features-core-$RELEASE*.noarch.rpm minion/rpms/opennms-minion-features-core.noarch.rpm
+cp $RPM_ROOT/opennms-minion-features-default-$RELEASE*.noarch.rpm minion/rpms/opennms-minion-features-default.noarch.rpm

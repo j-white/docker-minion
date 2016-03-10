@@ -2,10 +2,9 @@ postgres:
   image: postgres:9.5.1
 opennms:
   build: opennms
-#  image: opennms/opennms
   ports:
    - "18101:8101"
-   - "8980:8980"
+   - "18980:8980"
   # Work around for too many files issue when running the Liquibase migrations
   privileged: true
   ulimits:
@@ -16,8 +15,8 @@ opennms:
    - postgres
 minion:
   build: minion
-#  image: opennms/minion
   ports:
-   - "28101:8101"
+   - "28101:8201"
+   - "1514:514/udp"
   links:
    - opennms
