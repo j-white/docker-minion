@@ -9,11 +9,12 @@ RUN yum localinstall -y /*.rpm && rm -rf /*.rpm
 COPY scripts/bootstrap.sh /opt/minion/bin
 
 # Ports
-# 514 - Syslog
+# 514 - Syslog (Javanet Implementation)
+# 5150 - Syslog (Camel Netty Implementation)
 # 1299 - RMI Registry
 # 8201 - Karaf SSH
 # 45444 - RMI Server
-EXPOSE 514 1299 8201 45444
+EXPOSE 514 1299 5150 8201 45444
 
 WORKDIR /opt/minion
 ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk
