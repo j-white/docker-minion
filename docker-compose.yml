@@ -17,6 +17,6 @@ minion:
   build: minion
   ports:
    - "28101:8201"
-   - "1514:5150/udp"
+   - "1514:1514/udp"
   links:
    - opennms

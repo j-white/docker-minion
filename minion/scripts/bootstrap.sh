@@ -9,5 +9,8 @@ echo "broker-url = tcp://${OPENNMS_PORT_61616_TCP_ADDR}:${OPENNMS_PORT_61616_TCP
 echo "username = admin" >> $MINION_HOME/etc/org.opennms.minion.controller.cfg
 echo "password = admin" >> $MINION_HOME/etc/org.opennms.minion.controller.cfg
 
+echo "syslog.listen.interface = 0.0.0.0" > $MINION_HOME/etc/org.opennms.netmgt.syslog.cfg
+echo "syslog.listen.port = 1514" >> $MINION_HOME/etc/org.opennms.netmgt.syslog.cfg
+
 rm -rf $MINION_HOME/data
 $MINION_HOME/bin/karaf clean server
